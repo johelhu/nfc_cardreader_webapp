@@ -1,2 +1,2 @@
 # nfc_cardreader_webapp
-Access control using NFC technology
+Esto es un proyecto para bitacora de tarjetas NFC
