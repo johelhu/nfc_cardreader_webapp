@@ -6,7 +6,10 @@ from smartcard.Exceptions import CardConnectionException
 from smartcard.System import readers
 from smartcard.util import toHexString
 from smartcard.scard import *
-import os, sys # Para correr comandos de BASH
+from os import system as bash # Para correr comandos de BASH
+
+from sys import exit
+
 import signal
 from time import sleep
 import RPi.GPIO as GPIO
@@ -15,11 +18,11 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.OUT)
 GPIO.output(7, False)
 
-#os.system('clear')
+#bash('clear')
 
 def sigint_handler(signal, frame):
     print('Interrupted')
-    sys.exit(0)
+    exit(0)
 signal.signal(signal.SIGINT, sigint_handler)
 
 l_atr =1
@@ -45,7 +48,7 @@ def main():
             #assert len(readers)>0
             reader = readers[0]
         except:
-            os.system('./restart_servive_hack.sh')
+            bash('./restart_servive_hack.sh')
             sleep(0.5)
             continue
         try:
@@ -68,35 +71,39 @@ def main():
                 oldATR=0
                 continue
                 #print("He fallado :c")
-                #sys.exit(1)
+                #exit(1)
 
             if ( l_atr == oldATR ):
-                #sys.exit(1)
+                #exit(1)
                 continue
-            
+
             oldATR=l_atr
 
             if ( len(l_atr) ):
                 pass
             else:
-                #sys.exit(1)
+                #exit(1)
                 continue
             GPIO.output(7, True)
-            os.system('date')
-            os.system('printf "#$( date ): " >> /var/www/html/ingreso.log.txt')
+            bash('date')
+            bash('printf "#$( date ): " >> /var/www/html/ingreso.log.txt')
             print(reader, 'El UID es:', l_atr)
-            os.system('grep ^'+l_atr+' base_de_datos_plana.txt')
-            os.system('grep ^'+l_atr+' base_de_datos_plana.txt | cut -f 2,3 -d, >> /var/www/html/ingreso.log.txt')
+            bash('grep ^'+l_atr+' base_de_datos_plana.txt')
+            bash('grep ^'+l_atr+' base_de_datos_plana.txt | cut -f 2,3 -d, >> /var/www/html/ingreso.log.txt')
             sleep(0.5)
+
+        except ValueError as e:
+            print(e)
+            exit(1)
 
         except CardConnectionException:
             pass
         except NoCardException:
             if ( oldATR ):
                 oldATR=0
-                os.system('date')
+                bash('date')
                 print(reader, 'La tarjeta se ha retirado')
                 GPIO.output(7, False)
-                
+
 if __name__ == '__main__':
     main()
