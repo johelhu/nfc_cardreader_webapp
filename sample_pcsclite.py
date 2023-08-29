@@ -14,11 +14,18 @@ from sys import exit
 
 import signal
 from time import sleep
-import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(7, GPIO.OUT)
-GPIO.output(7, False)
+raspberry=True
+try:
+    import RPi.GPIO as GPIO
+
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(7, GPIO.OUT)
+    GPIO.output(7, False)
+
+except ModuleNotFoundError:
+    print(f"Ejecución fuera de un entorno Raspberry Pi")
+    raspberry=False
 
 #bash('clear')
 
@@ -40,7 +47,8 @@ APDU_command = [0xFF,0xCA,0x00,0x00,0x00]
 
 def main():
     while True:
-        GPIO.output(7, False)
+        if raspberry:
+            GPIO.output(7, False)
         sleep(0.1)
         try:
             hresult, hcontext = SCardEstablishContext(SCARD_SCOPE_USER)
@@ -86,7 +94,8 @@ def main():
             else:
                 #exit(1)
                 continue
-            GPIO.output(7, True)
+            if raspberry:
+                GPIO.output(7, True)
             print(f"{dt.now()}")
             bash('printf "#$( date ): " >> /var/www/html/ingreso.log.txt')
             print(reader, 'El UID es:', l_atr)
@@ -105,7 +114,8 @@ def main():
                 oldATR=0
                 print(f"{dt.now()}")
                 print(reader, 'La tarjeta se ha retirado')
-                GPIO.output(7, False)
+                if raspberry:
+                    GPIO.output(7, False)
 
 if __name__ == '__main__':
     main()

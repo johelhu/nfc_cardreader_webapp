@@ -17,6 +17,7 @@ Acontinuacion los comandos para actualizar el sistema e instalar las dependencia
 
 ```bash
 sudo apt update
+sudo apt install pcscd
 sudo apt install python3-virtualenv
 
 virtualenv venv
