@@ -1,1 +1,2 @@
-pyscard:1.9.4
+swig
+pyscard

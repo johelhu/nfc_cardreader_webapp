@@ -8,6 +8,8 @@ from smartcard.util import toHexString
 from smartcard.scard import *
 from os import system as bash # Para correr comandos de BASH
 
+from datetime import datetime as dt
+
 from sys import exit
 
 import signal
@@ -85,7 +87,7 @@ def main():
                 #exit(1)
                 continue
             GPIO.output(7, True)
-            bash('date')
+            print(f"{dt.now()}")
             bash('printf "#$( date ): " >> /var/www/html/ingreso.log.txt')
             print(reader, 'El UID es:', l_atr)
             bash('grep ^'+l_atr+' base_de_datos_plana.txt')
@@ -101,7 +103,7 @@ def main():
         except NoCardException:
             if ( oldATR ):
                 oldATR=0
-                bash('date')
+                print(f"{dt.now()}")
                 print(reader, 'La tarjeta se ha retirado')
                 GPIO.output(7, False)
 
