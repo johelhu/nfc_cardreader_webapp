@@ -1,12 +1,14 @@
 #!/bin/bash
 
+alias python=python3
+
 EJECUTABLE=./sample_pcsclite.py
 #python3 $EJECUTABLE &
 
 (
     while :
     do
-	timeout 10 python $EJECUTABLE
+	timeout 10 python3 $EJECUTABLE
    done
 ) &
 
