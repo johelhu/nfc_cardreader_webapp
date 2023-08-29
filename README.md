@@ -35,3 +35,6 @@ source ./venv/bin/activate
 bash run.sh
 
 ```
+## Colabaradores:
+- Allan Hidalgo
+- Johel Hidalgo
