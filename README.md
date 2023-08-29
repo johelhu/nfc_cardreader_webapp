@@ -12,7 +12,8 @@ Acontinuacion los comandos para actualizar el sistema e instalar las dependencia
 - apt update, actualiza la informacion del software disponible
 - apt install python3-virtualenv, instala el comando virtualenv en el sistema
 - virtualenv venv, crea un directorio llamado _venv_ que contiene un entorno python
-- source ./venv/bin/activate, esto activa el entorno para que sea utilizado en lugar del python del sistema
+- source _./venv/bin/activate_, esto activa el entorno para que sea utilizado en lugar del python del sistema
+- pip3 install smartcard, se uso el instalador de paquetes de python y se agrego el paquete de _smartcard_
 
 ```bash
 sudo apt update
@@ -20,6 +21,16 @@ sudo apt install python3-virtualenv
 
 virtualenv venv
 source ./venv/bin/activate
+
+pip3 install smartcard
+
+```
+
+## Ejectuar codigo (ubuntu)
+
+```bash
+source ./venv/bin/activate
+
 
 bash run.sh
 
