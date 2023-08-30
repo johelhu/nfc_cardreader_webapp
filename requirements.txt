@@ -1,2 +1,2 @@
 swig
-pyscard==1.9.4
+pyscard

@@ -46,21 +46,20 @@ APDU_command = [0xFF,0xCA,0x00,0x00,0x00]
 
 
 def main():
+    try:
+        hresult, hcontext = SCardEstablishContext(SCARD_SCOPE_USER)
+        #assert hresult==SCARD_S_SUCCESS
+        hresult, readers = SCardListReaders(hcontext, [])
+        # Hay lectores conectados
+        #assert len(readers)>0
+        reader = readers[0]
+    except ValueError:
+        #bash('./restart_servive_hack.sh')
+        exit(1)
     while True:
         if raspberry:
             GPIO.output(7, False)
         sleep(0.1)
-        try:
-            hresult, hcontext = SCardEstablishContext(SCARD_SCOPE_USER)
-            #assert hresult==SCARD_S_SUCCESS
-            hresult, readers = SCardListReaders(hcontext, [])
-            # Hay lectores conectados
-            #assert len(readers)>0
-            reader = readers[0]
-        except:
-            bash('./restart_servive_hack.sh')
-            sleep(0.5)
-            continue
         try:
             # Leer el UID:
             try:
@@ -80,7 +79,7 @@ def main():
             except:
                 oldATR=0
                 continue
-                #print("He fallado :c")
+                print("He fallado :c")
                 #exit(1)
 
             if ( l_atr == oldATR ):
@@ -97,25 +96,25 @@ def main():
             if raspberry:
                 GPIO.output(7, True)
             print(f"{dt.now()}")
-            bash('printf "#$( date ): " >> /var/www/html/ingreso.log.txt')
+            #bash('printf "#$( date ): " >> /var/www/html/ingreso.log.txt')
             print(reader, 'El UID es:', l_atr)
-            bash('grep ^'+l_atr+' base_de_datos_plana.txt')
-            bash('grep ^'+l_atr+' base_de_datos_plana.txt | cut -f 2,3 -d, >> /var/www/html/ingreso.log.txt')
+            #bash('grep ^'+l_atr+' base_de_datos_plana.txt')
+            #bash('grep ^'+l_atr+' base_de_datos_plana.txt | cut -f 2,3 -d, >> /var/www/html/ingreso.log.txt')
             sleep(0.5)
 
         except ValueError as e:
             print(e)
             exit(1)
 
-        except CardConnectionException:
-            pass
-        except NoCardException:
-            if ( oldATR ):
-                oldATR=0
-                print(f"{dt.now()}")
-                print(reader, 'La tarjeta se ha retirado')
-                if raspberry:
-                    GPIO.output(7, False)
+        #except CardConnectionException:
+        #    pass
+        #except NoCardException:
+        #    if ( oldATR ):
+        #        oldATR=0
+        #        print(f"{dt.now()}")
+        #        print(reader, 'La tarjeta se ha retirado')
+        #        if raspberry:
+        #            GPIO.output(7, False)
 
 if __name__ == '__main__':
     main()
