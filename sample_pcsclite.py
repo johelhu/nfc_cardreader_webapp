@@ -52,6 +52,9 @@ def main():
         hresult, readers = SCardListReaders(hcontext, [])
         # Hay lectores conectados
         #assert len(readers)>0
+        if not readers:
+            print("conecte el lector")
+            exit(1) 
         reader = readers[0]
     except ValueError:
         #bash('./restart_servive_hack.sh')
