@@ -44,3 +44,5 @@ python3 sample_pcsclite.py
 ## Colabaradores:
 - Allan Hidalgo
 - Johel Hidalgo
+- Daniel Hidalgo
+- Jeancarlo Hidalgo
