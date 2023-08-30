@@ -41,6 +41,11 @@ source ./venv/bin/activate
 python3 sample_pcsclite.py
 
 ```
+##TODO
+- [x] Hacer un README
+- [ ] Investigar la biblioteca pyscard
+- [ ] Investigar los comandos de el lector ACR1252
+
 ## Colabaradores:
 - Allan Hidalgo
 - Johel Hidalgo
