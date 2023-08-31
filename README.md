@@ -54,3 +54,4 @@ python3 sample_pcsclite.py
 - Johel Hidalgo
 - Daniel Hidalgo
 - Jeancarlo Hidalgo
+- Steven Murcia
