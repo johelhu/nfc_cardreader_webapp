@@ -44,10 +44,14 @@ python3 sample_pcsclite.py
 
 ## Requirements
 
+```bash
+
 swig: Dependencia de pyscard
 pyscard: Biblioteca del lector de tarjetas
 pandas: Biblioteca para análisis de datos
 openpyxl : Biblioteca que necesita pandas para abrir un excel
+
+```
 
 ## TODO
 - [x] Hacer un README
