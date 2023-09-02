@@ -4,6 +4,9 @@
 # Estas líneas importan varias bibliotecas y módulos necesarios para interactuar con lectores de tarjetas inteligentes y gestionar la
 # comunicación con tarjetas NFC.
 
+from os import system as bash # Libreria para correr comandos bash dentro del codigo
+import pandas as pd # Es una biblioteca para trabajar con tablas de datos # as pd (leer como)
+
 from smartcard.Exceptions import NoCardException           
 from smartcard.Exceptions import CardConnectionException
 from smartcard.System import readers
@@ -33,11 +36,28 @@ oldATR = 0  # Guarda la UID antigua de la tarjeta en caso de algun cambio en med
 
 APDU_command = [0xFF, 0xCA, 0x00, 0x00, 0x00]
 
+
+def inicializar_datos():
+    try:
+        df = pd.read_excel("data.xlsx", converters={'card_uid': str}) #Abrir el excel y combierte una columna en str
+
+    except FileNotFoundError: # Error de cuando no hay data.xlsx
+        #df = pd.DataFrame(columns=['nombre', 'grupo', 'grado', 'beca', 'ne', 'card_uid'])
+        #print(df)
+        
+        print('No se encontro el archivo de datos')
+        exit(1)
+        
+    return df
+
 # La función main es la función principal del programa
 # Se establece el contexto del sistema de tarjetas inteligentes y se obtiene la lista de lectores disponibles
 # Si no se encuentra se muestra un mensaje de conectar el lector 
 
 def main():
+    bash('clear')
+    df = inicializar_datos() 
+
     try:
         hresult, hcontext = SCardEstablishContext(SCARD_SCOPE_USER)
         hresult, readers = SCardListReaders(hcontext, [])
@@ -76,14 +96,18 @@ def main():
                 l_atr = str(response).replace(', ', '')
                 l_atr = l_atr.replace('[', '')
                 l_atr = l_atr.replace(']', '')
-            except:
+
+            except SystemError: # Error de cuando no hay lectura
                 oldATR = 0
                 continue
 
             # Compara el UID de la tarjeta actual con la UID anterior para saber si ha habido algun cambio
 
-            if l_atr == oldATR:
-                continue
+            try:
+                if l_atr == oldATR:
+                    continue
+            except UnboundLocalError: # Error cuando se inicia con una tarjeta puesta en el lector
+                pass                  # Para que continue
 
             oldATR = l_atr
 
@@ -92,8 +116,25 @@ def main():
             else:
                 continue
 
-            print(f"{dt.now()}")               # Muesta la fecha y hora actual 
-            print(reader, 'El UID es:', l_atr) # Muesta la UID de la tarjeta de salida
+            #print(f"{dt.now()}")               # Muesta la fecha y hora actual 
+            #print(reader, 'El UID es:', l_atr) # Muesta la UID de la tarjeta de salida
+            
+            l_atr = f'ID{l_atr}' # Ingresa un "ID" previo al numero para igualar al formato del exel
+
+
+            # Se imprime el contenido de las 2 variables para compararlas
+            #print(f"El tipo de l_atr es {type(l_atr)}, el tipo de df[card_uid] es {type(df['card_uid'][0])}")
+            #print(f"l_atr es {l_atr}, df[card_uid] es {df['card_uid'][0]}")
+            
+            row = df.loc[df['card_uid'] == l_atr] # Localiza una fila comparando el valor de una columna
+            if not row.empty:
+            
+            # Imprime un texto con formato resaltando la fecha y el nombre, además de acomodar la fecha
+            
+                print(f" -> Lectura, fecha: \033[1;32m{dt.now().strftime('%d/%m/%Y, %H:%M:%S')}\033[0m, por \033[1;33m{row['nombre'].values[0]}\033[0m, contenido \n{row}\n")
+            else:
+                print(f' Nueva lectura desconocida, UID: {l_atr}') # Muesta la UID de la tarjeta de salida
+    
             sleep(0.5)
 
         except ValueError as e: # Manejo de exepciones

@@ -1,4 +1,0 @@
-                      Nombre             Estado       Beca      Edad   Enfermedades 
-41731117012891321440, Hidalgo Ureña Daniel, No Becado, 113411438,    Ninguna,
-41741017012891321440, Murcia Solano Steven, No Beca, 1173112418 ,    Alergia al Mani,
-41741317012891321440, Zumbado Lacayo Katherine, Becado,2412421
