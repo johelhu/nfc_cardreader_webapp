@@ -41,6 +41,14 @@ source ./venv/bin/activate
 python3 sample_pcsclite.py
 
 ```
+
+## Requirements
+
+swig: Dependencia de pyscard
+pyscard: Biblioteca del lector de tarjetas
+pandas: Biblioteca para análisis de datos
+openpyxl : Biblioteca que necesita pandas para abrir un excel
+
 ## TODO
 - [x] Hacer un README
 - [ ] Investigar la biblioteca pyscard
