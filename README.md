@@ -45,9 +45,8 @@ python3 sample_pcsclite.py
 - [x] Hacer un README
 - [ ] Investigar la biblioteca pyscard
 - [ ] Investigar los comandos de el lector ACR1252
-- [ ] Investigar librerias de python presentes en el codigo
-- [ ] Investigar Etimología de hexadecimal
-- [ ] Investigar comandos APDU
+- [x] Investigar librerias de python presentes en el codigo
+- [x] Investigar comandos APDU
 
 ## Colabaradores:
 - Allan Hidalgo
