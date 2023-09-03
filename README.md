@@ -1,9 +1,10 @@
-# nfc_cardreader_webapp
-Esto es un proyecto para bitacora de tarjetas NFC
+# Dolphin_SmartCard
 
-## Visualizacion de pagina de bitacoras
+Proyecto de lectura de tarjetas NFC con base de datos
 
-https://danielhu7.github.io/nfc_cardreader_webapp/html/template/index.html
+## Documentación del proyecto
+
+https://caroje.com/doc/dolphin_smartcard/
 
 ## Instalar (ubuntu)
 
