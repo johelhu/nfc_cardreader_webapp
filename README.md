@@ -1,4 +1,4 @@
-# Dolphin_SmartCard
+# Dolphin SmartCard
 
 Proyecto de lectura de tarjetas NFC con base de datos
 
