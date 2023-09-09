@@ -51,6 +51,7 @@ swig: Dependencia de pyscard
 pyscard: Biblioteca del lector de tarjetas
 pandas: Biblioteca para análisis de datos
 openpyxl : Biblioteca que necesita pandas para abrir un excel
+kivy : Libreria para hacer aplicaciónes
 
 ```
 
@@ -60,6 +61,7 @@ openpyxl : Biblioteca que necesita pandas para abrir un excel
 - [ ] Investigar los comandos de el lector ACR1252
 - [x] Investigar librerias de python presentes en el codigo
 - [x] Investigar comandos APDU
+- [ ] Leer biblioteca de Kivy
 
 ## Colabaradores:
 - Allan Hidalgo

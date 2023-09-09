@@ -2,3 +2,4 @@ swig
 pyscard
 pandas
 openpyxl
+kivy
