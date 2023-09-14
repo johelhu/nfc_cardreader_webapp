@@ -1,0 +1,25 @@
+<Box01>:
+    canvas:
+        Color:
+            rgb: 1,1,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        size_hint_x: 0.5  # Ocupa la mitad del ancho del contenedor principal
+        canvas:
+            Color:
+                rgb: 0, 0, 1  # Color azul
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+    BoxLayout:
+        size_hint_x: 0.5  # Ocupa la mitad del ancho del contenedor principal
+        canvas:
+            Color:
+                rgb: 1, 0, 0  # Color rojo
+            Rectangle:
+                size: self.size
+                pos: self.pos
