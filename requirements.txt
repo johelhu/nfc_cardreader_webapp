@@ -3,3 +3,5 @@ pyscard
 pandas
 openpyxl
 kivy
+pygobject
+pycairo

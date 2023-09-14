@@ -23,6 +23,8 @@ sudo apt update
 sudo apt install pcscd
 sudo apt install libpcsclite-dev
 sudo apt install python3-virtualenv
+sudo apt install libcairo2-dev
+sudo apt install libgirepository1.0-dev
 
 virtualenv venv
 source ./venv/bin/activate
@@ -50,8 +52,8 @@ python3 sample_2.0.py
 swig: Dependencia de pyscard
 pyscard: Biblioteca del lector de tarjetas
 pandas: Biblioteca para análisis de datos
-openpyxl : Biblioteca que necesita pandas para abrir un excel
-kivy : Libreria para hacer aplicaciónes
+openpyxl: Biblioteca que necesita pandas para abrir un excel
+kivy: Libreria para hacer aplicaciónes
 
 ```
 

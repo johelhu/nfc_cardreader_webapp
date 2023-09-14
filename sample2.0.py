@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python #Le dice al sistema como debe interpretar y ejecutar el archivo
 
 # Importación de bibliotecas y modulos
 # Estas líneas importan varias bibliotecas y módulos necesarios para interactuar con lectores de tarjetas inteligentes y gestionar la
