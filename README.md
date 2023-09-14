@@ -39,7 +39,7 @@ El archivo sample_pcsclite.py se mantiene escuchando por tarjetas en el lector e
 
 source ./venv/bin/activate
 
-python3 sample_pcsclite.py
+python3 sample_2.0.py
 
 ```
 
@@ -61,7 +61,8 @@ kivy : Libreria para hacer aplicaciónes
 - [ ] Investigar los comandos de el lector ACR1252
 - [x] Investigar librerias de python presentes en el codigo
 - [x] Investigar comandos APDU
-- [ ] Leer biblioteca de Kivy
+- [x] Leer biblioteca de Kivy
+- [x] Arreglar Data (50%)
 
 ## Colabaradores:
 - Allan Hidalgo

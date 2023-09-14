@@ -1,4 +1,4 @@
-import kivy #Libreria de kive
+import kivy #Libreria de kivy
 from kivy.app import App #Lugar para vaciar los widgets
 from kivy.uix.boxlayout import BoxLayout # Forma en la que se va a ver
 from kivy.config import Config #Poder hacer configuraciones
