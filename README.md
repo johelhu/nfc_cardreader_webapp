@@ -11,14 +11,17 @@ https://caroje.com/doc/dolphin_smartcard/
 Acontinuacion los comandos para actualizar el sistema e instalar las dependencias.
 
 - apt update, actualiza la informacion del software disponible
-- apt install python3-virtualenv, instala el comando virtualenv en el sistema
 - virtualenv venv, crea un directorio llamado _venv_ que contiene un entorno python
 - source _./venv/bin/activate_, esto activa el entorno para que sea utilizado en lugar del python del sistema
 - pip3 install smartcard, se uso el instalador de paquetes de python y se agrego el paquete de _smartcard_
+- apt install python3-virtualenv, instala el comando virtualenv en el sistema
 - apt install pcscd, instalar programa que se dedica a escuchar por lectores de tarjetas
 - apt install libpcsclite-dev, subdependencia faltante
+- apt install libcairo2-dev, dependencia de GTK para el renderizado de gráficos
+- apt install libgirepository1.0-dev, simplifica el proceso de desarrollo de apps GUI basadas en GTK en lenguajes como python
 
 ```bash
+
 sudo apt update
 sudo apt install pcscd
 sudo apt install libpcsclite-dev
@@ -65,7 +68,8 @@ kivy: Libreria para hacer aplicaciónes
 - [x] Investigar comandos APDU
 - [x] Leer biblioteca de Kivy
 - [x] Arreglar Data (50%)
-
+- [x] Leer biblioteca GTK
+- [ ] Desarrollar GUI
 ## Colabaradores:
 - Allan Hidalgo
 - Johel Hidalgo
