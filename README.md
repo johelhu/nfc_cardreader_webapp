@@ -57,6 +57,8 @@ pyscard: Biblioteca del lector de tarjetas
 pandas: Biblioteca para análisis de datos
 openpyxl: Biblioteca que necesita pandas para abrir un excel
 kivy: Libreria para hacer aplicaciónes
+pygobject: Simplifica la programación orientada a objetos y arquitectura diriguida por eventos
+pycairo: Biblioteca de renderizado avanzado de controles de aplicaciones
 
 ```
 
@@ -70,6 +72,8 @@ kivy: Libreria para hacer aplicaciónes
 - [x] Arreglar Data (50%)
 - [x] Leer biblioteca GTK
 - [ ] Desarrollar GUI
+- [ ] Hacer parametros (argparse)
+
 ## Colabaradores:
 - Allan Hidalgo
 - Johel Hidalgo
