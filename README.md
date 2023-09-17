@@ -44,7 +44,7 @@ El archivo sample_pcsclite.py se mantiene escuchando por tarjetas en el lector e
 
 source ./venv/bin/activate
 
-python3 sample_2.0.py
+python3 interfazNativa.py
 
 ```
 
@@ -73,6 +73,7 @@ pycairo: Biblioteca de renderizado avanzado de controles de aplicaciones
 - [x] Leer biblioteca GTK
 - [ ] Desarrollar GUI
 - [ ] Hacer parametros (argparse)
+- [ ] Hacer salida de imagen
 
 ## Colabaradores:
 - Allan Hidalgo
