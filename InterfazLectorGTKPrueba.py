@@ -20,6 +20,8 @@ base_de_datos = {
 # Crear la ventana principal
 ventana = Gtk.Window(title="Lector de Tarjetas NFC")
 ventana.connect("destroy", Gtk.main_quit)
+ventana.set_default_size(800, 600)
+ventana.maximize()
 
 # Crear una caja de diseño vertical
 caja = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)

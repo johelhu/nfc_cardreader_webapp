@@ -1,31 +1,24 @@
 #!/usr/bin/env python #Le dice al sistema como debe interpretar y ejecutar el archivo
 
-from os import system as bash 
 from smartcard.Exceptions import NoCardException           
 from smartcard.Exceptions import CardConnectionException
 from smartcard.System import readers
 from smartcard.util import toHexString
 from smartcard.scard import *
-import signal  
 from datetime import datetime as dt
 from time import sleep
+import time
+import subprocess
 
 from administradorDatos import inicializar_datos
 
 def leer():
-
-    def sigint_handler(signal, frame): 
-        print('Proceso interrumpido')
-        exit(0)
-
-    signal.signal(signal.SIGINT, sigint_handler)
-
+    subprocess.run(['clear'], shell=True) # limpia la terminal (similar a "bash('clear')", necesario por ser un subprocess)
     l_atr = 1   
     oldATR = 0  
 
     APDU_command = [0xFF, 0xCA, 0x00, 0x00, 0x00]
 
-    bash('clear')
     df = inicializar_datos() 
 
     try:
@@ -40,7 +33,8 @@ def leer():
     except ValueError:
         exit(1)
           
-    print("Ejecutando programa. Por favor, ingrese una tarjeta NFC en el lector...")    
+    print("Ejecutando programa. Por favor, ingrese una tarjeta NFC en el lector...")   
+
     while True:
         
         sleep(0.1)
@@ -79,11 +73,13 @@ def leer():
             l_atr = f'ID{l_atr}' 
             row = df.loc[df['card_uid'] == l_atr] 
             if not row.empty:
-
+                
+                card_data = row
                 print(f" -> Lectura, fecha: \033[1;32m{dt.now().strftime('%d/%m/%Y, %H:%M:%S')}\033[0m, por \033[1;33m{row['nombre'].values[0]}\033[0m, contenido \n{row}\n")
 
             else:
 
+                card_data = l_atr
                 print(f' Nueva lectura desconocida, UID: {l_atr}')
     
             sleep(0.5)
