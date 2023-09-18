@@ -8,12 +8,12 @@ from smartcard.scard import *
 from datetime import datetime as dt
 from time import sleep
 import time
-import subprocess
+#import subprocess
 
 from administradorDatos import inicializar_datos
 
-def leer():
-    subprocess.run(['clear'], shell=True) # limpia la terminal (similar a "bash('clear')", necesario por ser un subprocess)
+def leer(funcion_salida):
+    #subprocess.run(['clear'], shell=True) # limpia la terminal (similar a "bash('clear')", necesario por ser un subprocess)
     l_atr = 1   
     oldATR = 0  
 
@@ -75,13 +75,35 @@ def leer():
             if not row.empty:
                 
                 card_data = row
-                print(f" -> Lectura, fecha: \033[1;32m{dt.now().strftime('%d/%m/%Y, %H:%M:%S')}\033[0m, por \033[1;33m{row['nombre'].values[0]}\033[0m, contenido \n{row}\n")
+                str_contenido = f""" -> Lectura,
+                fecha: \033[1;32m{dt.now().strftime('%d/%m/%Y, %H:%M:%S')}
+                \033[0m, por \033[1;33m{row['nombre'].values[0]}
+                \033[0m, contenido
+                {row}"""
+                print(str_contenido)
 
+                funcion_salida(
+                        nombre = row['nombre'].values[0],
+                        fecha = dt.now().strftime('%d/%m/%Y, %H:%M:%S'),
+                        grupo = f"{row['grupo'].values[0]} - {row['grado'].values[0]}",
+                        beca = row['beca'].values[0],
+                        uid = row['card_uid'].values[0],
+                        ne = row['necesidades_especiales'].values[0],
+                    )
             else:
 
                 card_data = l_atr
-                print(f' Nueva lectura desconocida, UID: {l_atr}')
-    
+                str_contenido = f' Nueva lectura desconocida, UID: {l_atr}'
+                print(str_contenido)
+                
+                funcion_salida(
+                        nombre = "Desconocido",
+                        fecha = dt.now().strftime('%d/%m/%Y, %H:%M:%S'),
+                        grupo = 0,
+                        beca = 0,
+                        uid = l_atr,
+                        ne = 0,
+                    )
             sleep(0.5)
 
         except ValueError as e: 

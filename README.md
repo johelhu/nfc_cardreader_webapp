@@ -38,7 +38,7 @@ pip3 install -r requirements.txt
 
 ## Ejectuar codigo (ubuntu)
 
-El archivo sample_pcsclite.py se mantiene escuchando por tarjetas en el lector e imprime en terminal el UID de las mismas (UID seria la identidad de las tarjetas)
+El archivo lectorUID.py se mantiene escuchando por tarjetas en el lector e imprime en terminal el UID de las mismas (UID seria la identidad de las tarjetas)
 
 ```bash
 
@@ -74,6 +74,7 @@ pycairo: Biblioteca de renderizado avanzado de controles de aplicaciones
 - [ ] Desarrollar GUI
 - [ ] Hacer parametros (argparse)
 - [ ] Hacer salida de imagen
+- [x] Agregar .gitignore
 
 ## Colabaradores:
 - Allan Hidalgo
