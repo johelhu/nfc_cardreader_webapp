@@ -16,30 +16,65 @@ ventana.connect("destroy", Gtk.main_quit) # finalizar aplicación cuando se cier
 ventana.set_default_size(800, 600) # ajustar el tamaño de la ventana
 ventana.maximize() # maximizarlo a tamaño completo
 
-caja = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6) # agrega orientacion y espaciado
-ventana.add(caja) # crea una caja en la ventana pricipal
+# Crear una rejilla para organizar los elementos en dos columnas
+rejilla = Gtk.Grid()
+rejilla.get_style_context().add_class("rejilla_item")
+ventana.add(rejilla)
 
-label1 = Gtk.Label(label="Leea la tarjeta NFC en el lector") # Crear etiqueta de texto
+label1 = Gtk.Label(label="Lea la tarjeta NFC en el lector")
+rejilla.attach(label1, 0, 0, 1, 1)  # Colocar label1 en la primera columna (0) y fila (0)
 
-i_fecha = Gtk.Label(label="Nombre") # Crear etiqueta de texto
-i_nombre = Gtk.Label(label="Nombre") # Crear etiqueta de texto
-i_grupo = Gtk.Label(label="Grupo") # Crear etiqueta de texto
-i_beca = Gtk.Label(label="Beca") # Crear etiqueta de texto
-i_uid = Gtk.Label(label="Salida de datos") # Crear etiqueta de texto
-i_ne = Gtk.Label(label="Salida de datos") # Crear etiqueta de texto
+i_fecha = Gtk.Label(label="Fecha")
+i_nombre = Gtk.Label(label="Nombre")
+i_grupo = Gtk.Label(label="Grupo")
+i_beca = Gtk.Label(label="Beca")
+i_uid = Gtk.Label(label="UID")
+i_ne = Gtk.Label(label="NE")
 
+i_fecha.get_style_context().add_class("rejilla_item")
+i_nombre.get_style_context().add_class("rejilla_item")
+i_grupo.get_style_context().add_class("rejilla_item")
+i_beca.get_style_context().add_class("rejilla_item")
+i_uid.get_style_context().add_class("rejilla_item")
+i_ne.get_style_context().add_class("rejilla_item")
 
-boton_imprimir = Gtk.Button.new_with_label("Limpiar datos") # crear un boton 
-caja.pack_start(label1, True, True, 0) # administración del espacio que cubre
+i_fecha.set_xalign(-1.0)
+i_nombre.set_xalign(-1.0)
+i_grupo.set_xalign(-1.0)
+i_beca.set_xalign(-1.0)
+i_uid.set_xalign(-1.0)
+i_ne.set_xalign(-1.0)
 
-caja.pack_start(i_fecha, True, True, 0) # 0 represanta el espacio entre widgets  
-caja.pack_start(i_nombre, True, True, 0) # 0 represanta el espacio entre widgets  
-caja.pack_start(i_grupo, True, True, 0) # 0 represanta el espacio entre widgets  
-caja.pack_start(i_beca, True, True, 0) # 0 represanta el espacio entre widgets  
-caja.pack_start(i_uid, True, True, 0) # 0 represanta el espacio entre widgets  
-caja.pack_start(i_ne, True, True, 0) # 0 represanta el espacio entre widgets  
+# Colocar etiquetas en la segunda columna (1) y filas correspondientes
+rejilla.attach(i_fecha, 0, 1, 1, 1)
+rejilla.attach(i_nombre, 1, 1, 1, 1)
+rejilla.attach(i_grupo, 0, 2, 1, 1)
+rejilla.attach(i_beca, 1, 2, 1, 1)
+rejilla.attach(i_uid, 0, 3, 1, 1)
+rejilla.attach(i_ne, 1, 3, 1, 1)
 
-caja.pack_start(boton_imprimir, True, True, 0) # Agrega el boton a la caja
+boton_imprimir = Gtk.Button.new_with_label("Limpiar datos")
+
+rejilla.attach(boton_imprimir, 1, 0, 1, 1)  # Colocar el botón en la segunda columna y última fila
+
+# Establecer el estilo CSS para la rejilla
+css_provider = Gtk.CssProvider()
+css_provider.load_from_data(b'''
+    .rejilla {
+        background-color: #565869;
+        padding: 6px 6px;
+    }
+    .rejilla_item {
+        margin: 6px 6px;
+        font-size: 14px;
+        min-width: 400px;
+    }
+''')
+
+screen = ventana.get_screen()
+style_context = ventana.get_style_context()
+style_context.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
 
 def actualizar_info_interfaz(
         nombre,
