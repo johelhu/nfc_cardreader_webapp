@@ -60,30 +60,27 @@ def leer(funcion_salida): # llama la funcion leer
             id_tarjeta_pasada = id_tarjeta  # La tarjeta reciente se convierte en la pasada    
             id_tarjeta = f'ID{id_tarjeta}' # Lo igualamos al formato en el excel
 
-            row = df.loc[df['card_uid'] == id_tarjeta] 
-            if not row.empty:
+            salida_df = df.loc[df['card_uid'] == id_tarjeta] # Compara el id de la tarjeta con el de la base de datos
+            if not salida_df.empty: # si no esta vacío inicia el if
                 
-                str_contenido = f""" -> Lectura,
-                fecha: \033[1;32m{dt.now().strftime('%d/%m/%Y, %H:%M:%S')}
-                \033[0m, por \033[1;33m{row['nombre'].values[0]}
-                \033[0m, contenido
-                {row}"""
-                print(str_contenido)
+                str_contenido = salida_df # Guarda toda la variable de salida
+                print(salida_df) # La imprime
 
-                funcion_salida(
-                        nombre = row['nombre'].values[0],
+                funcion_salida( # Guarda datos de la df de salida en variables
+                        nombre = f"{salida_df['nombre'].values[0]}  {salida_df['primer_apellido'].values[0]}  {salida_df['segundo_apellido'].values[0]}",
                         fecha = dt.now().strftime('%d/%m/%Y, %H:%M:%S'),
-                        grupo = f"{row['grupo'].values[0]} - {row['grado'].values[0]}",
-                        beca = row['beca'].values[0],
-                        uid = row['card_uid'].values[0],
-                        ne = row['necesidades_especiales'].values[0],
+                        grupo = f"{salida_df['grado'].values[0]} - {salida_df['grupo'].values[0]}",
+                        beca = salida_df['beca'].values[0],
+                        uid = salida_df['card_uid'].values[0],
+                        ne = salida_df['necesidades_especiales'].values[0],
                     )
             else:
 
+                # Pasa si hay una lectura y no esta en la base de datos
                 str_contenido = f' Nueva lectura desconocida, UID: {id_tarjeta}'
                 print(str_contenido)
                 
-                funcion_salida(
+                funcion_salida( # Ya que es una lectura desconocida no tiene datos
                         nombre = "Desconocido",
                         fecha = dt.now().strftime('%d/%m/%Y, %H:%M:%S'),
                         grupo = 0,
@@ -108,5 +105,5 @@ def leer(funcion_salida): # llama la funcion leer
             exit(1)
 
 
-if __name__ == '__main__':
-    leer()
+if __name__ == '__main__': # Verifica que este sea el modulo principal
+    leer() # Si lo es corre toda la funcion
