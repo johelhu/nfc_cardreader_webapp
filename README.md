@@ -9,10 +9,9 @@ https://caroje.com/doc/dolphin_smartcard/
 ## Instalar
 Acontinuacion los comandos para actualizar el sistema e instalar las dependencias.
 ### Arch
-- sudo pacman -Ss, actualiza la informacion del software disponible.
 
 ```bash
-
+sudo pacman -Ss ## Actualiza la informacion del software disponible.
 sudo pacman -Sy pcsclite
 sudo pacman -S python-virtualenv
 
@@ -27,16 +26,6 @@ pip install -r requirements.txt
 ```
 
 ### Ubuntu
-
-- apt update, actualiza la informacion del software disponible
-- virtualenv venv, crea un directorio llamado _venv_ que contiene un entorno python
-- source _./venv/bin/activate_, esto activa el entorno para que sea utilizado en lugar del python del sistema
-- pip3 install smartcard, se uso el instalador de paquetes de python y se agrego el paquete de _smartcard_
-- apt install python3-virtualenv, instala el comando virtualenv en el sistema
-- apt install pcscd, instalar programa que se dedica a escuchar por lectores de tarjetas
-- apt install libpcsclite-dev, subdependencia faltante
-- apt install libcairo2-dev, dependencia de GTK para el renderizado de gráficos
-- apt install libgirepository1.0-dev, simplifica el proceso de desarrollo de apps GUI basadas en GTK en lenguajes como python
 
 ```bash
 
@@ -65,7 +54,16 @@ source ./venv/bin/activate
 python3 interfazNativa.py
 
 ```
-
+## Dependencias
+ - apt update, actualiza la informacion del software disponible
+- virtualenv venv, crea un directorio llamado _venv_ que contiene un entorno python
+- source _./venv/bin/activate_, esto activa el entorno para que sea utilizado en lugar del python del sistema
+- pip3 install smartcard, se uso el instalador de paquetes de python y se agrego el paquete de _smartcard_
+- apt install python3-virtualenv, instala el comando virtualenv en el sistema
+- apt install pcscd, instalar programa que se dedica a escuchar por lectores de tarjetas
+- apt install libpcsclite-dev, subdependencia faltante
+- apt install libcairo2-dev, dependencia de GTK para el renderizado de gráficos
+- apt install libgirepository1.0-dev, simplifica el proceso de desarrollo de apps GUI basadas en GTK en lenguajes como python
 ## Requirements
 
 ```bash
