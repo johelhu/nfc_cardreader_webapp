@@ -65,16 +65,13 @@ python3 interfazNativa.py
 - apt install libcairo2-dev, dependencia de GTK para el renderizado de gráficos
 - apt install libgirepository1.0-dev, simplifica el proceso de desarrollo de apps GUI basadas en GTK en lenguajes como python
 ## Requirements
-
-```bash
-
-swig: Dependencia de pyscard
-pyscard: Biblioteca del lector de tarjetas
-pandas: Biblioteca para análisis de datos
-openpyxl: Biblioteca que necesita pandas para abrir un excel
-kivy: Libreria para hacer aplicaciónes
-pygobject: Simplifica la programación orientada a objetos y arquitectura diriguida por eventos
-pycairo: Biblioteca de renderizado avanzado de controles de aplicaciones
+- swig: Dependencia de pyscard
+- pyscard: Biblioteca del lector de tarjetas
+- pandas: Biblioteca para análisis de datos
+- openpyxl: Biblioteca que necesita pandas para abrir un excel
+- kivy: Libreria para hacer aplicaciónes
+- pygobject: Simplifica la programación orientada a objetos y arquitectura diriguida por eventos
+- pycairo: Biblioteca de renderizado avanzado de controles de aplicaciones
 
 ```
 
