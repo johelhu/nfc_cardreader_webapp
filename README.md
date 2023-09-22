@@ -72,9 +72,6 @@ python3 interfazNativa.py
 - kivy: Libreria para hacer aplicaciónes
 - pygobject: Simplifica la programación orientada a objetos y arquitectura diriguida por eventos
 - pycairo: Biblioteca de renderizado avanzado de controles de aplicaciones
-
-```
-
 ## TODO
 - [x] Hacer un README
 - [ ] Investigar la biblioteca pyscard
