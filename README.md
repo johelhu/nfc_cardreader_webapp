@@ -12,7 +12,7 @@ Acontinuacion los comandos para actualizar el sistema e instalar las dependencia
 
 ```bash
 sudo pacman -Ss ## Actualiza la informacion del software disponible.
-sudo pacman -Sy pcsclite
+sudo pacman -Sy pcsclite ccid pcsc-tools
 sudo pacman -S python-virtualenv
 
 sudo systemctl start pcscd
