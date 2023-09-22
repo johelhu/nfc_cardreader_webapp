@@ -11,8 +11,8 @@ Acontinuacion los comandos para actualizar el sistema e instalar las dependencia
 ### Arch
 
 ```bash
-sudo pacman -Ss ## Actualiza la informacion del software disponible.
-sudo pacman -Sy pcsclite ccid pcsc-tools
+## -Sy Actualiza la informacion del software disponible.
+sudo pacman -Sy pcsclite ccid pcsc-tools # PCSCLite versión [=1.9.4]
 sudo pacman -S python-virtualenv
 
 sudo systemctl start pcscd
@@ -86,6 +86,8 @@ python3 interfazNativa.py
 - [ ] Hacer salida de imagen
 - [x] Agregar .gitignore
 - [ ] Comentar codigo legacy
+
+## Troubleshooting (Solución de problemas)
 
 ## Colabaradores:
 - Allan Hidalgo
