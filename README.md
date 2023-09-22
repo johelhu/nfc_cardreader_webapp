@@ -6,9 +6,27 @@ Proyecto de lectura de tarjetas NFC con base de datos
 
 https://caroje.com/doc/dolphin_smartcard/
 
-## Instalar (ubuntu)
-
+## Instalar
 Acontinuacion los comandos para actualizar el sistema e instalar las dependencias.
+### Arch
+- sudo pacman -Ss, actualiza la informacion del software disponible.
+
+```bash
+
+sudo pacman -Sy pcsclite
+sudo pacman -S python-virtualenv
+
+sudo systemctl start pcscd
+
+virtualenv venv
+source ./venv/bin/activate
+
+pip install swig ## Instalar antes de los demas
+pip install -r requirements.txt
+
+```
+
+### Ubuntu
 
 - apt update, actualiza la informacion del software disponible
 - virtualenv venv, crea un directorio llamado _venv_ que contiene un entorno python
@@ -36,7 +54,7 @@ pip3 install -r requirements.txt
 
 ```
 
-## Ejectuar codigo (ubuntu)
+## Ejectuar codigo (Ubuntu y Arch)
 
 El archivo lectorUID.py se mantiene escuchando por tarjetas en el lector e imprime en terminal el UID de las mismas (UID seria la identidad de las tarjetas)
 
@@ -75,10 +93,11 @@ pycairo: Biblioteca de renderizado avanzado de controles de aplicaciones
 - [ ] Hacer parametros (argparse)
 - [ ] Hacer salida de imagen
 - [x] Agregar .gitignore
+- [ ] Comentar codigo legacy
 
 ## Colabaradores:
 - Allan Hidalgo
-- Johel Hidalgo
-- Daniel Hidalgo
-- Jeancarlo Hidalgo
-- Steven Murcia
+- [Johel Hidalgo](https://caroje.com/profile/johelhu/)
+- [Daniel Hidalgo](https://caroje.com/profile/danielhu/)
+- [Jeancarlo Hidalgo](https://caroje.com/profile/jeancahu/)
+- [Steven Murcia](https://caroje.com/profile/stevenms/)
