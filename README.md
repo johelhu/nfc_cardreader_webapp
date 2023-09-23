@@ -96,6 +96,7 @@ python3 interfazNativa.py
 ## Colabaradores:
 - Allan Hidalgo
 - [Johel Hidalgo](https://caroje.com/profile/johelhu/)
+## Asesores:
 - [Daniel Hidalgo](https://caroje.com/profile/danielhu/)
 - [Jeancarlo Hidalgo](https://caroje.com/profile/jeancahu/)
 - [Steven Murcia](https://caroje.com/profile/stevenms/)
