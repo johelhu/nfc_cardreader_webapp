@@ -74,18 +74,22 @@ python3 interfazNativa.py
 - **pycairo**: Biblioteca de renderizado avanzado de controles de aplicaciones
 ## TODO
 - [x] Hacer un **README**
-- [ ] Investigar la biblioteca **pyscard**
+- [x] Investigar la biblioteca **pyscard**
 - [ ] Investigar los comandos de el lector **ACR1252**
-- [x] Investigar librerias de python presentes en el codigo
+- [x] Leer documentación de **python**
+- [x] Leer documentacion de **GTK**
+- [x] Leer documentacion del módulo **scard**
 - [x] Investigar comandos **APDU**
 - [x] Leer biblioteca de **Kivy**
-- [x] Arreglar Data (*50%*)
+- [x] Integrar Base de datos
 - [x] Leer biblioteca **GTK**
-- [ ] Desarrollar GUI
+- [x] Desarrollar GUI
 - [ ] Hacer parametros (*argparse*)
-- [ ] Hacer salida de imagen
+- [x] Hacer salida de imagen
 - [x] Agregar **.gitignore**
 - [ ] Comentar codigo **legacy**
+- [ ] Hacer logo
+- [ ] Terminar documentación
 
 ## Troubleshooting (*Solución de problemas*)
  - Lector no reconocido: La version de la dependencia **pscslite** tiene que estar exactamente en la version **1.9.4** en caso de estar en una version mas actualizada que esa podria no recononcer el lector.
