@@ -11,7 +11,7 @@ from PIL import Image
 from io import BytesIO
 
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
-nombre_imagen = "ImagenPrueba.jpg"
+nombre_imagen = "ImagenPrueba.jpg" 
 
 url = "https://xsgames.co/randomusers/avatar.php?g=male"
 

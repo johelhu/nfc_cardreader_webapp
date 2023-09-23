@@ -60,6 +60,8 @@ def leer(funcion_salida): # llama la funcion leer
             id_tarjeta_pasada = id_tarjeta  # La tarjeta reciente se convierte en la pasada    
             id_tarjeta = f'ID{id_tarjeta}' # Lo igualamos al formato en el excel
 
+            print("me estoy ejecutando en blucle")
+
             salida_df = df.loc[df['card_uid'] == id_tarjeta] # Compara el id de la tarjeta con el de la base de datos
             if not salida_df.empty: # si no esta vacío inicia el if
                 
