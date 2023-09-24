@@ -16,6 +16,7 @@ import signal  # Importa la biblioteca signal, modulo que permite trabajar con s
 
 from datetime import datetime as dt
 from time import sleep
+from reinicio import restart_pcscd
 
 def sigint_handler(signal, frame): # Define una funcion "sigint_handler" que se ejecutara cuando resiba una señal
     print('Proceso interrumpido')
@@ -35,8 +36,9 @@ oldATR = 0  # Guarda la UID antigua de la tarjeta en caso de algun cambio en med
 # Leer el UID mediante Codigos APDU:
 
 #APDU_command = [0xFF,0x00,0x40,0x0D,0x04,0x00,0x00,0x00,0x00] # rojo
-APDU_command = [0xE0,0x00,0x00,0x29,0x01,0x02,0x00,0x00,0x00] # verde
+#APDU_command = [0xFF, 0x00, 0x52, 0x00, 0x00] # 0xD4, 0x60, 0xFF, 0x02, 0x10] # verde
 APDU_command = [0xFF, 0xCA, 0x00, 0x00, 0x00]
+restart_pcscd()
 
 
 def inicializar_datos():
