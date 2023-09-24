@@ -11,7 +11,7 @@ A continuacion los comandos para actualizar el sistema e instalar las dependenci
 ### Arch
 
 ```bash
-## -Sy Actualiza la informacion del software disponible.
+sudo pacman -Sy # Actualiza la informacion del software disponible.
 sudo pacman -Sy pcsclite ccid pcsc-tools # PCSCLite versión [=1.9.4]
 sudo pacman -S python-virtualenv
 
@@ -20,7 +20,7 @@ sudo systemctl start pcscd
 virtualenv venv
 source ./venv/bin/activate
 
-pip install swig ## Instalar antes de los demas
+pip install swig # Instalar antes de los demas
 pip install -r requirements.txt
 
 ```
@@ -51,7 +51,7 @@ El archivo **lectorUID.py** se mantiene escuchando por tarjetas en el lector e i
 
 source ./venv/bin/activate
 
-python3 interfazNativa.py
+python3 interfazNativa2.py
 
 ```
 ## Dependencias
